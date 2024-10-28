@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Text, View, Image, Button, Alert } from 'react-native';
+import { Text, ScrollView, Image, Button, Alert } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 
 const App = () => {
@@ -55,12 +55,12 @@ const App = () => {
   };
 
   return (
-      <View>
+      <ScrollView>
         <StatusBar hidden={true} />
         <Text>Animal Quiz</Text>
         {questions.map((q, index) => (
-            <View key={index}>
-              <Image source={q.image} style={{ width: 100, height: 100 }} />
+            <ScrollView key={index}>
+              <Image source={q.image} style={{ width: 400, height: 300 }} />
               <Text>{q.question}</Text>
               <RNPickerSelect
                   onValueChange={(value) => {
@@ -70,10 +70,10 @@ const App = () => {
                   }}
                   items={q.options}
               />
-            </View>
+            </ScrollView>
         ))}
         <Button title="Submit Answers" onPress={handleSubmit} />
-      </View>
+      </ScrollView>
   );
 };
 
